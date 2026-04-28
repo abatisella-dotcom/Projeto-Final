@@ -2,11 +2,9 @@
 // CONFIGURAÇÃO DO BANCO DE DADOS PostgreSQL COM DOTENV
 // ============================================================
 
-// Importar dotenv e carregar variáveis do arquivo .env
-require('dotenv').config();
-
-// Importar o Pool do PostgreSQL
-const { Pool } = require('pg');
+import dotenv from 'dotenv';
+dotenv.config();
+import { Pool } from 'pg';
 
 // ============================================================
 // CONFIGURAR O POOL DE CONEXÕES
@@ -67,5 +65,5 @@ criarTabela();
 // EXPORTAR O POOL
 // ============================================================
 
-module.exports = pool;
+export default pool;
 

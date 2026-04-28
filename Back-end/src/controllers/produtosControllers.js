@@ -1,4 +1,4 @@
-const produtosModel = require('../models/produtosModels');
+import produtosModel from '../models/produtosModels.js';
 
 // LISTAR
 async function listarTodos(req, res) {
@@ -88,7 +88,7 @@ async function deletar(req, res) {
   }
 }
 
-module.exports = {
+export default {
   listarTodos,
   buscarPorId,
   buscarPorNome,

@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
+import produtosControllers from '../controllers/produtosControllers.js';
 
-const produtosControllers = require('../controllers/produtosControllers');
+const router = express.Router();
 
 // ROTAS
 router.get('/', produtosControllers.listarTodos);
@@ -11,4 +11,4 @@ router.post('/', produtosControllers.criar);
 router.put('/:id', produtosControllers.atualizar);
 router.delete('/:id', produtosControllers.deletar);
 
-module.exports = router;
+export default router;

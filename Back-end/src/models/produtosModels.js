@@ -1,4 +1,4 @@
-const pool = require('../config/database');
+import pool from '../config/database.js';
 
 // ========================================
 // LISTAR TODOS
@@ -92,7 +92,7 @@ async function buscarPorNome(nome) {
 }
 
 // ========================================
-module.exports = {
+export default {
   listarTodos,
   buscarPorId,
   criar,
