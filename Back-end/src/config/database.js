@@ -26,7 +26,7 @@ const pool = new Pool({
 // TESTAR CONEXÃO
 // ============================================================
 
-pool.connect((erro, produtos, release) => {
+pool.connect((erro, client, release) => {
   if (erro) {
     console.error('❌ Erro ao conectar ao PostgreSQL:', erro.message);
     console.error('💡 Verifique suas credenciais no arquivo .env');
@@ -44,13 +44,13 @@ pool.connect((erro, produtos, release) => {
 
 const criarTabela = async () => {
   const sql = `
-Create table if not exists produtos (
-id SERIAL PRIMARY KEY,
-nome VARCHAR(255) NOT NULL,
-preco DECIMAL(10,2) NOT NULL,
-estoque INTEGER NOT NULL,
-categoria VARCHAR(100) NOT NULL
-)
+    CREATE TABLE IF NOT EXISTS produtos (
+      id         SERIAL PRIMARY KEY,
+      nome       VARCHAR(255)   NOT NULL,
+      preco      DECIMAL(10,2)  NOT NULL,
+      estoque    INTEGER        NOT NULL,
+      categoria  VARCHAR(100)   NOT NULL
+    )
   `;
   
   try {
@@ -68,4 +68,3 @@ criarTabela();
 // ============================================================
 
 module.exports = pool;
-

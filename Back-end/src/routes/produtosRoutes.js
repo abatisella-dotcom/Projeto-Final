@@ -1,14 +1,33 @@
+// Importar o Express para criar o router
 const express = require('express');
 const router = express.Router();
 
-const produtosControllers = require('../controllers/produtosControllers');
+// Importar as funções do Controller
+const ProdutoController = require('../controllers/produtoController');
 
-// ROTAS
-router.get('/', produtosControllers.listarTodos);
-router.get('/buscar/nome/:nome', produtosControllers.buscarPorNome);
-router.get('/buscar/id/:id', produtosControllers.buscarPorId);
-router.post('/', produtosControllers.criar);
-router.put('/:id', produtosControllers.atualizar);
-router.delete('/:id', produtosControllers.deletar);
+// ============================================================
+// DEFINIÇÃO DAS ROTAS
+// ============================================================
 
+// GET /produtos - Listar todos os produtos
+router.get('/', ProdutoController.listarTodos);
+
+// GET /produtos/categoria/:categoria - Buscar por categoria
+router.get('/categoria/:categoria', ProdutoController.buscarPorCategoria);
+
+// GET /produtos/:id - Buscar produto específico por ID
+router.get('/:id', ProdutoController.buscarPorId);
+
+// POST /produtos - Criar novo produto
+router.post('/', ProdutoController.criar);
+
+// PUT /produtos/:id - Atualizar produto completo
+router.put('/:id', ProdutoController.atualizar);
+
+// DELETE /produtos/:id - Deletar produto
+router.delete('/:id', ProdutoController.deletar);
+
+// ============================================================
+// EXPORTAR O ROUTER
+// ============================================================
 module.exports = router;
