@@ -86,18 +86,35 @@ function Listagem() {
   }
 
   async function buscarProdutos() {
-    setCarregando(true);
-    try {
-      const query = textoBusca ? `?${filtroBusca}=${encodeURIComponent(textoBusca)}` : "";
-      const res = await fetch(`${API_URL}${query}`);
-      let data = await res.json();
-      setListaProdutos(Array.isArray(data) ? data : data ? [data] : []);
-    } catch {
-      alert("Erro na busca");
-    } finally {
-      setCarregando(false);
-    }
+  const texto = textoBusca.trim();
+  if (!texto) {
+    return carregarProdutos();
   }
+
+  setCarregando(true);
+  try {
+    let res;
+    if (filtroBusca === "id") {
+      res = await fetch(`${API_URL}/buscar/id/${encodeURIComponent(texto)}`);
+      if (res.status === 404) {
+        setListaProdutos([]);
+        return;
+      }
+      const data = await res.json();
+      setListaProdutos(Array.isArray(data) ? data : data ? [data] : []);
+    } else {
+      res = await fetch(`${API_URL}/buscar/nome/${encodeURIComponent(texto)}`);
+      const data = await res.json();
+      setListaProdutos(Array.isArray(data) ? data : data ? [data] : []);
+    }
+  } catch (err) {
+    console.error("Erro na busca:", err);
+    alert("Erro na busca");
+  } finally {
+    setCarregando(false);
+  }
+}
+
 
   return (
     <div className={styles.pagina}>
