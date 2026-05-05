@@ -1,0 +1,94 @@
+/* Sobre.module.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&display=swap');
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+  background: #ffdce8;
+   font-family: "Rubik", sans-serif;
+}
+
+.contatoPage {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 50px;
+}
+
+.title {
+  font-family: "Rubik", sans-serif;
+  font-size: 1.3cm;
+  font-weight: bold;
+  color: #7d0000;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.contato {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.container {
+  background: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 100%;
+}
+
+.titulo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-shadow: none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #444;
+}
+
+.input {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 0.4rem;
+}
+
+.botao {
+  padding: 0.8rem;
+  background: #ff6600;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.botao:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.botao:hover:not(:disabled) {
+  background: #e65c00;
+}

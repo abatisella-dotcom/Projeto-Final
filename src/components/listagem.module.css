@@ -1,0 +1,199 @@
+
+
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  border-radius: 50px;
+  padding: 0 1.5rem;
+  height: calc-size(fit-content, size + 50px);
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: rgba(255, 248, 241, 0);
+}
+
+/* FORMULÁRIO */
+.formSection {
+  background-color: transparent;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+}
+
+
+
+
+.mainForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.inputGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+input, select {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.formActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.btnPrimary {
+  background: var(--primary);
+  color: white;
+  background-color: #a2002e;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btnPrimary:hover { 
+    background-color: rgb(224, 97, 0);
+     box-shadow: 0 2px 4px rgba(0,0,0,1);
+
+ }
+
+.btnSecondary {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* BUSCA */
+.listHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.searchBar {
+  display: flex;
+  gap: 0.5rem;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.searchBar input { border: none; background: #f1f5f9; }
+
+/* GRID DE CARDS */
+.gridCard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.produtoCard {
+  background: white;
+ box-shadow: 0 20px 20px -3px rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.produtoCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.idTag { font-size: 0.75rem; color: var(--text-muted); }
+
+.nome { font-size: 1.25rem; margin: 0 0 0.5rem 0; color: var(--text-main); }
+
+.priceTag {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.estoqueText {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.cardActions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.editBtn, .deleteBtn {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.editBtn { background: #f1f5f9; color: var(--text-main); }
+.editBtn:hover { background: #e2e8f0; }
+
+.deleteBtn { background: #fee2e2; color: var(--danger); }
+.deleteBtn:hover { background: #fecaca; }
+
+.divider {
+  border: 0;
+  border-top: 1px solid var(--border-color);
+  margin: 2rem 0;
+}
+
+.loader, .emptyState {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .inputGroup { grid-template-columns: 1fr; }
+  .listHeader { flex-direction: column; align-items: flex-start; }
+  .searchBar { width: 100%; }
+  .searchBar input { flex: 1; }
+}

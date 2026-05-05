@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+
+:root {
+  color: #1f2937;
+  background: #ffffff;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  background: #FFF2DB;
+  min-height: 100vh;
+} 
+
+/*HEADER*/
+header {
+  font-family: "Instrument Serif", serif;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+
+header h1{
+  color: #E42D32;
+  font-size: 90px;
+}
+
+.topbar {
+  background: #FFF2DB;
+  color: #ffffff;
+  padding: 24px;
+}
+
+
+.menu {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  font-family: "Instrument Serif", serif;
+  font-size: 24px; 
+  color: #ffffff;
+  text-decoration: none;
+  padding: 16px 32px; 
+  background: linear-gradient(90deg, #f4bb50, #f79532, #f25e36, #e42d32, #d0003e, #e41a56);
+  height: 20px; 
+  border-radius: 30px;
+  font-weight: bold;
+  letter-spacing: 1px; 
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.menu a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+.content {
+  padding: 24px;
+} 
+/*HEADER*/
+
+/*FOOTER*/
+footer {
+  background: linear-gradient(90deg, #f4bb50, #f79532, #f25e36, #e42d32, #d0003e, #e41a56);
+  width: 100%;
+  height: 80px;
+}
+
+footer h1 {
+  color: #ffffff;
+  font-family: "Instrument Serif", serif;
+  font-size: 18px;
+  letter-spacing: 1px; 
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+/*FOOTER*/
+
+

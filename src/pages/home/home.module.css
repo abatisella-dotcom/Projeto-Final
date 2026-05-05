@@ -1,0 +1,40 @@
+.homePage {
+    width: 30cm;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    color: #ffffff;
+    
+}
+
+p {
+    
+     font-family: "Rubik", sans-serif;
+     padding: 15px;
+     padding-left: 20px;
+     padding-right: 20px;
+     text-align: center;
+    }
+    
+    .divbranca1 {
+    margin-top: 1cm;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 50px;
+    width: 20cm;
+    color: #7c3000;
+    margin-bottom: 3cm;
+
+}
+
+.Cardsgrid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
