@@ -3,26 +3,26 @@ import API_URL from "../services/api";
 import styles from "./listagem.module.css";
 
 function Listagem() {
-  const [produtos, setProdutos] = useState([]);
-  const [nome, setNome] = useState("");
-  const [preco, setPreco] = useState("");
-  const [estoque, setEstoque] = useState("");
-  const [categoria, setCategoria] = useState("");
-  const [editandoId, setEditandoId] = useState(null);
-  const [buscaTipo, setBuscaTipo] = useState("nome");
-  const [buscaValor, setBuscaValor] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [listaProdutos, setListaProdutos] = useState([]);
+  const [produtoNome, setProdutoNome] = useState("");
+  const [produtoPreco, setProdutoPreco] = useState("");
+  const [produtoEstoque, setProdutoEstoque] = useState("");
+  const [produtoCategoria, setProdutoCategoria] = useState("");
+  const [idEmEdicao, setIdEmEdicao] = useState(null);
+  const [filtroBusca, setFiltroBusca] = useState("nome");
+  const [textoBusca, setTextoBusca] = useState("");
+  const [carregando, setCarregando] = useState(false);
 
   async function carregarProdutos() {
-    setLoading(true);
+    setCarregando(true);
     try {
       const res = await fetch(API_URL);
       const data = await res.json();
-      setProdutos(data);
-    } catch (err) {
+      setListaProdutos(data);
+    } catch {
       alert("Erro ao carregar produtos");
     } finally {
-      setLoading(false);
+      setCarregando(false);
     }
   }
 
@@ -32,18 +32,18 @@ function Listagem() {
 
   async function salvarProduto(e) {
     e.preventDefault();
-    if (!nome || !preco) return alert("Preencha os campos obrigatórios");
+    if (!produtoNome || !produtoPreco) return alert("Preencha os campos obrigatórios");
 
     const dados = { 
-      nome, 
-      preco: Number(preco) || 0, 
-      estoque: Number(estoque) || 0, 
-      categoria 
+      nome: produtoNome, 
+      preco: Number(produtoPreco) || 0, 
+      estoque: Number(produtoEstoque) || 0, 
+      categoria: produtoCategoria 
     };
 
     try {
-      const method = editandoId ? "PUT" : "POST";
-      const url = editandoId ? `${API_URL}/${editandoId}` : API_URL;
+      const method = idEmEdicao ? "PUT" : "POST";
+      const url = idEmEdicao ? `${API_URL}/${idEmEdicao}` : API_URL;
 
       await fetch(url, {
         method,
@@ -53,7 +53,7 @@ function Listagem() {
 
       limparFormulario();
       carregarProdutos();
-    } catch (err) {
+    } catch {
       alert("Erro ao salvar produto");
     }
   }
@@ -63,123 +63,125 @@ function Listagem() {
     try {
       await fetch(`${API_URL}/${id}`, { method: "DELETE" });
       carregarProdutos();
-    } catch (err) {
+    } catch {
       alert("Erro ao deletar");
     }
   }
 
   function editarProduto(produto) {
-    setEditandoId(produto.id);
-    setNome(produto.nome);
-    setPreco(produto.preco);
-    setEstoque(produto.estoque);
-    setCategoria(produto.categoria);
+    setIdEmEdicao(produto.id);
+    setProdutoNome(produto.nome);
+    setProdutoPreco(produto.preco);
+    setProdutoEstoque(produto.estoque);
+    setProdutoCategoria(produto.categoria);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function limparFormulario() {
-    setEditandoId(null);
-    setNome("");
-    setPreco("");
-    setEstoque("");
-    setCategoria("");
+    setIdEmEdicao(null);
+    setProdutoNome("");
+    setProdutoPreco("");
+    setProdutoEstoque("");
+    setProdutoCategoria("");
   }
 
   async function buscarProdutos() {
-    setLoading(true);
+    setCarregando(true);
     try {
-      const query = buscaValor ? `?${buscaTipo}=${encodeURIComponent(buscaValor)}` : "";
+      const query = textoBusca ? `?${filtroBusca}=${encodeURIComponent(textoBusca)}` : "";
       const res = await fetch(`${API_URL}${query}`);
       let data = await res.json();
-      setProdutos(Array.isArray(data) ? data : data ? [data] : []);
-    } catch (err) {
+      setListaProdutos(Array.isArray(data) ? data : data ? [data] : []);
+    } catch {
       alert("Erro na busca");
     } finally {
-      setLoading(false);
+      setCarregando(false);
     }
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.pagina}>
       {/* SEÇÃO DE CADASTRO */}
-      <section className={styles.formSection}>
+      <section className={styles.blocoFormulario}>
         <div className={styles.headerTitle}>
-          <h2>{editandoId ? "📝 Editar Produto" : " Novo Produto"}</h2>
-          {editandoId && <small>ID: #{editandoId}</small>}
+          <h2>{idEmEdicao ? "📝 Editar Produto" : "Novo Produto"}</h2>
+          {idEmEdicao && <small>ID: #{idEmEdicao}</small>}
         </div>
         
-        <form onSubmit={salvarProduto} className={styles.mainForm}>
-          <div className={styles.inputGroup}>
-            <input placeholder="Nome do Produto" value={nome} onChange={(e) => setNome(e.target.value)} required />
-            <input placeholder="Categoria" value={categoria} onChange={(e) => setCategoria(e.target.value)} />
+        <form onSubmit={salvarProduto} className={styles.formularioPrincipal}>
+          <div className={styles.grupoCampos}>
+            <input placeholder="Nome do Produto" value={produtoNome} onChange={(e) => setProdutoNome(e.target.value)} required />
+            <input placeholder="Categoria" value={produtoCategoria} onChange={(e) => setProdutoCategoria(e.target.value)} />
           </div>
-          <div className={styles.inputGroup}>
-            <input type="number" placeholder="Preço (R$)" value={preco} onChange={(e) => setPreco(e.target.value)} required />
-            <input type="number" placeholder="Estoque" value={estoque} onChange={(e) => setEstoque(e.target.value)} />
+          <div className={styles.grupoCampos}>
+            <input type="number" placeholder="Preço (R$)" value={produtoPreco} onChange={(e) => setProdutoPreco(e.target.value)} required />
+            <input type="number" placeholder="Estoque" value={produtoEstoque} onChange={(e) => setProdutoEstoque(e.target.value)} />
           </div>
 
-          <div className={styles.formActions}>
-            <button className={styles.btnPrimary} type="submit">
-              {editandoId ? "Atualizar Produto" : "Cadastrar Produto"}
+          <div className={styles.acoesFormulario}>
+            <button className={styles.botaoPrincipal} type="submit">
+              {idEmEdicao ? "Atualizar Produto" : "Cadastrar Produto"}
             </button>
-            <button className={styles.btnSecondary} type="button" onClick={limparFormulario}>
+            <button className={styles.botaoSecundario} type="button" onClick={limparFormulario}>
               Cancelar
             </button>
           </div>
         </form>
       </section>
 
-      <hr className={styles.divider} />
+      <hr className={styles.separador} />
 
       {/* SEÇÃO DE BUSCA E LISTAGEM */}
-      <section className={styles.listSection}>
-        <div className={styles.listHeader}>
-          <h2> Estoque</h2>
-          <div className={styles.searchBar}>
-            <select value={buscaTipo} onChange={(e) => setBuscaTipo(e.target.value)}>
+      <section className={styles.estoquesection} >
+        <div className={styles.cabecalhoLista}>
+          <h2>Estoque</h2>
+          <div className={styles.barraPesquisa}>
+            <select value={filtroBusca} onChange={(e) => setFiltroBusca(e.target.value)}>
               <option value="nome">Nome</option>
               <option value="id">ID</option>
             </select>
             <input 
               placeholder="Pesquisar..." 
-              value={buscaValor} 
-              onChange={(e) => setBuscaValor(e.target.value)}
+              value={textoBusca} 
+              onChange={(e) => setTextoBusca(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && buscarProdutos()}
             />
-            <button onClick={buscarProdutos} className={styles.btnIcon}>🔍</button>
+            <button onClick={buscarProdutos}>🔍</button>
           </div>
         </div>
 
-        {loading ? (
-          <div className={styles.loader}>Carregando produtos...</div>
+        {carregando ? (
+          <div className={styles.carregando}>Carregando produtos...</div>
         ) : (
-          <div className={styles.gridCard}>
-            {produtos.map((p) => (
-              <div key={p.id} className={styles.produtoCard}>
-                <div className={styles.cardHeader}>
-                  <span className={styles.badge}>{p.categoria || "Geral"}</span>
-                  <span className={styles.idTag}>#{p.id}</span>
+          <div className={styles.gradeItens}>
+            {listaProdutos.map((p) => (
+              <div key={p.id} className={styles.cardProduto}>
+                <div className={styles.cabecalhoCard}>
+                  <span className={styles.etiqueta}>{p.categoria || "Geral"}</span>
+                  <span className={styles.codigoId}>#{p.id}</span>
                 </div>
 
-                <div className={styles.cardBody}>
-                  <h3 className={styles.nome}>{p.nome}</h3>
-                  <div className={styles.priceTag}>R$ {Number(p.preco).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
-                  <p className={styles.estoqueText}>
-                    <span>📦 Estoque:</span> <strong>{p.estoque}</strong> unidades
+                <div>
+                  <h3 className={styles.tituloProduto}>{p.nome}</h3>
+                  <div className={styles.precoProduto}>
+                    R$ {Number(p.preco).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                  </div>
+                  <p className={styles.textoEstoque}>
+                    Estoque: <strong>{p.estoque}</strong> unidades
                   </p>
                 </div>
 
-                <div className={styles.cardActions}>
-                  <button className={styles.editBtn} onClick={() => editarProduto(p)}>Editar</button>
-                  <button className={styles.deleteBtn} onClick={() => deletarProduto(p.id)}>Excluir</button>
+                <div className={styles.acoesCard}>
+                  <button className={styles.botaoEditar} onClick={() => editarProduto(p)}>Editar</button>
+                  <button className={styles.botaoExcluir} onClick={() => deletarProduto(p.id)}>Excluir</button>
                 </div>
               </div>
             ))}
           </div>
         )}
         
-        {!loading && produtos.length === 0 && (
-          <div className={styles.emptyState}>Nenhum produto encontrado.</div>
+        {!carregando && listaProdutos.length === 0 && (
+          <div className={styles.estadoVazio}>Nenhum produto encontrado.</div>
         )}
       </section>
     </div>
