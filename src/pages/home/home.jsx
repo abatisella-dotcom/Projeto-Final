@@ -10,8 +10,9 @@ function Home() {
   return (
 <section className={styles.homePage}>
       <div className={styles.bannerContainer}>
-<img src="/img/image.png" alt="Banner" className={styles.bannerImg} />     
-   <h2 className={styles.bannerTitle}>
+       <img src="/img/fundo.png" alt="Banner" className={styles.bannerImg} />     
+
+         <h2 className={styles.bannerTitle}>
           Aqui é um espaço de resistência ao consumo exagerado, <br />
           à produção descartável e às <br />
           tendências que ignoram o povo.
