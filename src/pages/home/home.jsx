@@ -13,9 +13,11 @@ function Home() {
        <img src="/img/fundo.png" alt="Banner" className={styles.bannerImg} />     
 
          <h2 className={styles.bannerTitle}>
-          Aqui é um espaço de resistência ao consumo exagerado, <br />
-          à produção descartável e às <br />
-          tendências que ignoram o povo.
+          Aqui valorizamos o design que dura,<br /> 
+          a beleza dos detalhes e as<br />
+           escolhas que acompanham a sua história 
+           <br />por muito mais tempo. 
+          
         </h2>
       </div>
 
@@ -23,9 +25,8 @@ function Home() {
 
         <p>
 
-          Vestir-se é um ato político. <br />
-          É escolher circular ao invés de descartar.
-          É apoiar uma moda mais justa e acessível.
+          Vestir-se é expressar a sua essência.<br />
+           É dar preferência a peças duráveis, apoiar o comércio local e valorizar a moda.
         </p>
       </div>
 
