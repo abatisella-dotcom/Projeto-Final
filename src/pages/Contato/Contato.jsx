@@ -20,62 +20,71 @@ function Contato() {
   const formularioValido = nome && email && senha;
 
   return (
-    <>
-      <section className={`${styles.page} ${styles.contatoPage}`}>
-        <h1 className={styles.title}>Entre em Contato</h1>
+    <section className={styles.page}>
 
-        <div className={styles.contato}>
-          <p><b>Email :</b> brecho@gmail.com</p>
-          <p><b>Telefone :</b> (19)12345-6789</p>
+      
+      <div className={styles.mainContainer}>
+
+   
+        <div className={styles.textSide}>
+          <h1 className={styles.title}>ENTRE EM CONTATO</h1>
+
+          <p className={styles.subtitle}>
+            Fiquem à vontade para entrar em contato conosco,
+            estamos a disposição para melhor atendê-los!
+            
+                      </p>
+
+          <div className={styles.contactItem}>
+            <div className={styles.icon}>✉</div>
+            <div>
+              Email<br />MakalStore@gmail.com
+            </div>
+          </div>
+
+          <div className={styles.contactItem}>
+            <div className={styles.icon}>☏</div>
+            <div>
+              Telefone<br />+55 (19) 77788-2222
+            </div>
+          </div>
         </div>
 
-        <div className={styles.container}>
+        <form className={styles.formContainer} onSubmit={handleSubmit}>
 
-          <form className={styles.form} onSubmit={handleSubmit}>
-            <label className={styles.label}>
-              Nome
-              <input
-                type="text"
-                placeholder="Digite seu nome"
-                className={styles.input}
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-              />
-            </label>
+          <input
+            type="text"
+            placeholder="Insira seu nome"
+            className={styles.input}
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+          />
 
-            <label className={styles.label}>
-              Email
-              <input
-                type="email"
-                placeholder="Digite seu email"
-                className={styles.input}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </label>
+          <input
+            type="email"
+            placeholder="Insira um email válido"
+            className={styles.input}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-            <label className={styles.label}>
-              Senha
-              <input
-                type="password"
-                placeholder="Digite sua senha"
-                className={styles.input}
-                value={senha}
-                onChange={(e) => setSenha(e.target.value)}
-              />
-            </label>
+          <textarea
+            placeholder="Escreva sua mensagem "
+            className={styles.input}
+          />
 
-            <button
-              type="submit"
-              className={styles.botao}
-              disabled={!formularioValido}
-            >
-              Cadastrar
-            </button>
-          </form>
-        </div>
-      </section>
-    </>
+          <button
+            type="submit"
+            className={styles.botao}
+            disabled={!formularioValido}
+          >
+            ENVIAR
+          </button>
+
+        </form>
+
+      </div>
+    </section>
   );
 }
 
