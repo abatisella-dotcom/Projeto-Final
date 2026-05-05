@@ -61,6 +61,7 @@ p {
     align-items: center;
     gap: 18px;
     margin-bottom: 1.5cm;
+    
 }
 
 
@@ -71,3 +72,19 @@ p {
     width: 100%;    
 }
 
+/*responsividade*/
+@media (max-width: 768px) {
+    .sobrenostexto {
+        font-size: 0.8cm;
+        line-height: 1cm;
+        margin: 0.5cm;
+    }
+        .divbranca1 {
+            width: 15cm;
+            margin-top: 1cm;
+        }
+
+    .Cardsgrid {
+        flex-direction: column;
+    }
+}
