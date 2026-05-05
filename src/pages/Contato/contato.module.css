@@ -91,6 +91,7 @@
 textarea.input {
   min-height: 140px;
   resize: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
