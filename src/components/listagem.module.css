@@ -150,8 +150,8 @@ input, select {
 }
 
 .etiqueta {
-  background: #dbeafe;
-  color: #1e40af;
+  background: #ff9f8b;
+  color: #ffffff;
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
   font-size: 0.75rem;
@@ -191,11 +191,16 @@ input, select {
   font-size: 0.85rem;
 }
 
-.botaoEditar { background: #f1f5f9; color: var(--text-main); }
+.botaoEditar { background: #e1f0ff; color: var(--text-main); }
 .botaoEditar:hover { background: #e2e8f0; }
 
-.botaoExcluir { background: #fee2e2; color: var(--danger); }
-.botaoExcluir:hover { background: #fecaca; }
+.botaoExcluir { background: #ff7c7c; color: var(--danger); }
+.botaoExcluir:hover { 
+  
+  
+  background: #dd0000; 
+  color: #e2e8f0;
+}
 
 .separador {
   border: 0;
