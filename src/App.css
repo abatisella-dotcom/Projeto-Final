@@ -73,6 +73,63 @@ header h1{
 .content {
   padding: 24px;
 } 
+
+
+
+/* Botão sanduíche */
+.menu-toggle {
+  display: none;
+  font-size: 32px;
+  background: none;
+  border: none;
+  color: #E42D32;
+  cursor: pointer;
+}
+
+/* Menu padrão (desktop) */
+.menu {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+
+    
+  }
+
+header h1{
+  color: #E42D32;
+  font-size: 50px;
+}
+
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    background: #FFF2DB;
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  }
+
+  .menu.open {
+    display: flex;
+  }
+}
+
+
+
+
 /*HEADER*/
 
 /*FOOTER*/
